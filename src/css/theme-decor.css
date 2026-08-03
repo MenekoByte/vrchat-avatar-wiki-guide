@@ -19,6 +19,26 @@ body::after {
   z-index: 1;
 }
 
+html[data-xeno-software-rendering]::before,
+html[data-xeno-software-rendering]::after,
+html[data-xeno-software-rendering] body::before,
+html[data-xeno-software-rendering] body::after {
+  display: none;
+  position: absolute;
+  height: 100vh;
+}
+
+html[data-xeno-software-rendering] body {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+}
+
+html[data-xeno-software-rendering] body::before {
+  top: auto;
+  bottom: 0;
+}
+
 html::before {
   opacity: var(--xeno-page-decor-before-opacity);
   background-color: var(--xeno-page-decor-before-ramp-base);

@@ -33,6 +33,7 @@
   --xeno-bg-tan: #eeb88a;
   --xeno-page-bg-bottom: var(--xeno-bg-tan);
   --xeno-page-bg-top: var(--xeno-beige-light);
+  --xeno-page-bg-software-image: url('../../static/img/gradients/page-gradient-default.png');
   --xeno-page-decor-before-ramp-base: #341202;
   --xeno-page-decor-before-ramp-highlight: #f2b037;
   --xeno-page-decor-before-opacity: 0.2;
@@ -92,6 +93,18 @@
   --ifm-navbar-height: 4rem;
 }
 
+html[data-xeno-decor='troubleshooting'] {
+  --xeno-page-bg-software-image: url('../../static/img/gradients/page-gradient-troubleshooting.png');
+}
+
+html[data-xeno-decor='updating'] {
+  --xeno-page-bg-software-image: url('../../static/img/gradients/page-gradient-updating.png');
+}
+
+html[data-xeno-decor='customizing'] {
+  --xeno-page-bg-software-image: url('../../static/img/gradients/page-gradient-customizing.png');
+}
+
 html {
   overflow-x: hidden;
   background-color: var(--xeno-brown-dark);
@@ -104,9 +117,36 @@ html {
   background-size: 100% 100%, 30vh;
 }
 
+html[data-xeno-software-rendering] {
+  background-image: none;
+}
+
 body {
   margin: 0;
   background: transparent !important;
+}
+
+html[data-xeno-software-rendering] body {
+  background-color: var(--xeno-brown-dark-opaque) !important;
+  background-image: var(--xeno-page-bg-software-image) !important;
+  background-blend-mode: normal;
+  background-attachment: scroll !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+}
+
+html[data-xeno-software-rendering] body,
+html[data-xeno-software-rendering] body *,
+html[data-xeno-software-rendering] body::before,
+html[data-xeno-software-rendering] body::after,
+html[data-xeno-software-rendering] body *::before,
+html[data-xeno-software-rendering] body *::after {
+  box-shadow: none !important;
+}
+
+html[data-xeno-software-rendering] .footer::before,
+html[data-xeno-software-rendering] .footer::after {
+  box-shadow: 0 0 0 2px var(--xeno-orange-header) !important;
 }
 
 .theme-doc-toc-desktop,
