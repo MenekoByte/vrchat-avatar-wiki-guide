@@ -1,8 +1,11 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {graphicsBootstrapScript} from 'wiki-xenotheme/bootstrap';
+import {pageThemes} from './pageThemes';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
 
 const config: Config = {
   title: 'Wiki site',
@@ -15,10 +18,20 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://monadoart.github.io',
+  url: 'https://menekobyte.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/vrchat-avatar-wiki-guide/',
+
+  staticDirectories: ['static', 'node_modules/wiki-xenotheme/static'],
+
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML: graphicsBootstrapScript(pageThemes),
+    },
+  ],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -61,14 +74,12 @@ const config: Config = {
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
       } satisfies Preset.Options,
     ],
   ],
 
 themes: [
+  ['wiki-xenotheme', {pageThemes}],
   [
     '@easyops-cn/docusaurus-search-local',
     {

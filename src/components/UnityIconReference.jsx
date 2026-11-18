@@ -6,7 +6,7 @@ import {
   SceneIcon,
   UnityPackage,
   UnityPackageIcon,
-} from './UnityIcon';
+} from '@theme/UnityIcon';
 import styles from './UnityIconReference.module.css';
 
 const ICONS = [

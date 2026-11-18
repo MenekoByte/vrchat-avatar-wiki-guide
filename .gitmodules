@@ -1,0 +1,4 @@
+[submodule "wiki-xenotheme"]
+	path = wiki-xenotheme
+	url = https://github.com/MenekoByte/wiki-xenotheme.git
+	branch = master

@@ -2,7 +2,7 @@ import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { XenoCardFrame } from '@site/src/components/XenoCardFrame';
+import { XenoCardFrame } from '@theme/XenoCardFrame';
 import { useVccAdded } from '@site/src/components/useVccAdded';
 import { VCC_PACKAGE_GROUPS } from '@site/src/data/vccPackages';
 import styles from './VccPackageCards.module.css';

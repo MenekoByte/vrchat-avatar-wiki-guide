@@ -1,20 +1,12 @@
-export const DEFAULT_XENO_DECOR = 'default';
-export const DEFAULT_XENO_DECOR_STYLE = 'default';
-
-type XenoPageThemeDefinition = {
+// Per-page decor/colour overrides for this site. Consumed by wiki-xenotheme.
+export type PageThemeDefinition = {
   pattern: RegExp;
   decor: string;
   style?: string;
   variables?: Record<string, string>;
 };
 
-export type XenoPageTheme = {
-  decor: string;
-  style: string;
-  variables: Record<string, string>;
-};
-
-const PAGE_THEME_DEFINITIONS: readonly XenoPageThemeDefinition[] = [
+export const pageThemes: readonly PageThemeDefinition[] = [
   {
     pattern: /\/docs\/troubleshooting\/?$/,
     decor: 'troubleshooting',
@@ -104,46 +96,3 @@ const PAGE_THEME_DEFINITIONS: readonly XenoPageThemeDefinition[] = [
     // },
   },
 ] as const;
-
-const PAGE_THEME_VARIABLE_KEYS = Array.from(
-  new Set(
-    PAGE_THEME_DEFINITIONS.flatMap(({variables = {}}) =>
-      Object.keys(variables),
-    ),
-  ),
-);
-
-export function getXenoPageTheme(pathname: string): XenoPageTheme {
-  const match = PAGE_THEME_DEFINITIONS.find(({pattern}) => pattern.test(pathname));
-
-  return {
-    decor: match?.decor ?? DEFAULT_XENO_DECOR,
-    style: match?.style ?? DEFAULT_XENO_DECOR_STYLE,
-    variables: {...(match?.variables ?? {})},
-  };
-}
-
-export function applyXenoPageTheme(
-  root: HTMLElement,
-  theme: XenoPageTheme,
-): void {
-  root.dataset.xenoDecor = theme.decor;
-  root.dataset.xenoDecorStyle = theme.style;
-
-  PAGE_THEME_VARIABLE_KEYS.forEach((key) => {
-    root.style.removeProperty(key);
-  });
-
-  Object.entries(theme.variables).forEach(([key, value]) => {
-    root.style.setProperty(key, value);
-  });
-}
-
-export function clearXenoPageTheme(root: HTMLElement): void {
-  delete root.dataset.xenoDecor;
-  delete root.dataset.xenoDecorStyle;
-
-  PAGE_THEME_VARIABLE_KEYS.forEach((key) => {
-    root.style.removeProperty(key);
-  });
-}

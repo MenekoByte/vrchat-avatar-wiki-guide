@@ -3,13 +3,13 @@ sidebar_position: 99
 title: Style Reference
 ---
 
-import { PlaceholderCard } from '@site/src/components/PlaceholderCard';
-import { XenoCardFrame } from '@site/src/components/XenoCardFrame';
-import { HoverOption, HoverVideo } from '@site/src/components/HoverOption';
-import { DocsMediaRow } from '@site/src/components/DocsMediaRow';
-import { DocsPageLead } from '@site/src/components/DocsPageLead';
+import { PlaceholderCard } from '@theme/PlaceholderCard';
+import { XenoCardFrame } from '@theme/XenoCardFrame';
+import { HoverOption, HoverVideo } from '@theme/HoverOption';
+import { DocsMediaRow } from '@theme/DocsMediaRow';
+import { DocsPageLead } from '@theme/DocsPageLead';
 import { VccIcon, VccProjectsLabel, VccManageProjectLabel, AddIcon, RemoveIcon, VersionNone, VersionInstalled } from '@site/src/components/InstallationInlineUi/InstallationInlineUi';
-import ColorTokenPalette from '@site/src/components/ColorTokenPalette';
+import ColorTokenPalette from '@theme/ColorTokenPalette';
 import { UnityIconReference } from '@site/src/components/UnityIconReference';
 
 Visual reference and usage guide for every component and style used across this wiki.
@@ -37,7 +37,7 @@ The `##` above is what every `##` heading looks like automatically - no import n
 Most of the time `##` headings are all you need. Use the explicit components when you need a tab label above a banner, a named sub-section break, or a gauge bar with a right-side value:
 
 ```mdx
-import { SectionTab, SectionBanner, SubSectionBanner, GaugeHeader } from '@site/src/components/XenoMarkers';
+import { SectionTab, SectionBanner, SubSectionBanner, GaugeHeader } from '@theme/XenoMarkers';
 
 <SectionTab>Optional</SectionTab>
 <SectionBanner>My Section</SectionBanner>
@@ -86,7 +86,7 @@ All card components share a dark frame with metallic-yellow rivets at each corne
 Shows a screenshot inside the card frame with an optional floating pill label above it. `src` is passed through `useBaseUrl` automatically - use the `/img/` path as-is.
 
 ```mdx
-import { LocationCard } from '@site/src/components/LocationCard';
+import { LocationCard } from '@theme/LocationCard';
 
 <LocationCard src="/img/settings-panel.png" title="Settings" />
 <LocationCard src="/img/something.png" />  {/* no label */}
@@ -113,7 +113,7 @@ The `highlight` prop annotates regions of the screenshot. Coordinates are fracti
 Same frame and rivets as `LocationCard`, but shows a caution area instead of an image. Use it anywhere a screenshot is still needed and replace the whole tag with a `<LocationCard>` once the real image is ready.
 
 ```mdx
-import { PlaceholderCard } from '@site/src/components/PlaceholderCard';
+import { PlaceholderCard } from '@theme/PlaceholderCard';
 
 <PlaceholderCard title="Settings Panel" text="Put a screenshot of the Settings panel here" />
 ```
@@ -128,7 +128,7 @@ import { PlaceholderCard } from '@site/src/components/PlaceholderCard';
 The raw frame primitive used by `LocationCard` and `PlaceholderCard`. Use it directly when you need the riveted frame around non-image content. Accepts `title`, `style`, `className`, `frameClassName`, `labelClassName`, `frameStyle`, `labelStyle`, and `topSpacing="none"` to suppress the margin reserved for the floating label.
 
 ```mdx
-import { XenoCardFrame } from '@site/src/components/XenoCardFrame';
+import { XenoCardFrame } from '@theme/XenoCardFrame';
 
 <XenoCardFrame title="Custom Content">
   <p style={{ padding: '1rem', color: 'white' }}>Anything here gets the riveted frame.</p>
@@ -149,7 +149,7 @@ Never hardcode hex or rgb values anywhere in CSS or JSX. Always reference the `-
 Centers a short intro sentence directly under the page `h1`. Collapses its own bottom margin so it sits tight against whatever follows.
 
 ```mdx
-import { DocsPageLead } from '@site/src/components/DocsPageLead';
+import { DocsPageLead } from '@theme/DocsPageLead';
 
 # My Page
 
@@ -164,7 +164,7 @@ import { DocsPageLead } from '@site/src/components/DocsPageLead';
 Two-column layout: text on the left, a media card on the right. Stacks vertically on narrow viewports with the media below. The `media` prop takes any JSX, typically a `<LocationCard />` or `<HoverVideo />`.
 
 ```mdx
-import { DocsMediaRow } from '@site/src/components/DocsMediaRow';
+import { DocsMediaRow } from '@theme/DocsMediaRow';
 
 <DocsMediaRow media={<LocationCard src="/img/something.png" title="The Panel" />}>
 
@@ -180,7 +180,7 @@ and aligns to the bottom of the text column.
 Hover-aware wrapper for optional steps that have an accompanying video. Hovering the `<HoverOption>` block adds a warm left accent bar and plays the embedded `<HoverVideo>`. Omit `src` from `<HoverVideo>` to show a "Video coming soon" placeholder instead.
 
 ```mdx
-import { HoverOption, HoverVideo } from '@site/src/components/HoverOption';
+import { HoverOption, HoverVideo } from '@theme/HoverOption';
 
 <HoverOption>
   <DocsMediaRow media={<HoverVideo src="/video/my-option.mp4" title="Right-click Menu" />}>
@@ -252,7 +252,7 @@ If the version column shows <VersionNone />, the package isn't installed. Once i
 Small inline icons matching the Unity editor's own file-type indicators. Use them next to any mention of a Unity asset type.
 
 ```mdx
-import { SceneIcon, PrefabIcon, ModelIcon, PrefabModelIcon, PrefabVariantIcon, UnityPackageIcon, UnityPackage } from '@site/src/components/UnityIcon';
+import { SceneIcon, PrefabIcon, ModelIcon, PrefabModelIcon, PrefabVariantIcon, UnityPackageIcon, UnityPackage } from '@theme/UnityIcon';
 ```
 
 <UnityIconReference />
